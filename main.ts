@@ -20,7 +20,6 @@ control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTT
             . . . . .
             `)
     }
-    basic.pause(10)
     basic.clearScreen()
 })
 control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTTON_EVT_DOWN, function () {
@@ -28,29 +27,29 @@ control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTT
 })
 radio.onReceivedString(function (receivedString) {
     Empfangen = receivedString
-    Laufzeit = input.runningTime()
+    ZeitpunktEmpfangen = input.runningTime()
 })
 let Position = 0
 let Pause = 0
 let Start = 0
 let Gedrueckt = 0
 let Stop = 0
-let Laufzeit = 0
+let ZeitpunktEmpfangen = 0
 let Empfangen = ""
 let StrichPunktLaenge = 0
 StrichPunktLaenge = 400
-let NeuerBuchstabe = 1000
+let PauseNeuerBuchstabe = 1000
 Empfangen = ""
-Laufzeit = 0
+ZeitpunktEmpfangen = 0
 let AlleZeichen = "**ETIANMSURWDKGOHVF*L*PJBXCYZQ**"
 radio.setGroup(1)
 radio.setTransmitPower(7)
 basic.forever(function () {
-    Pause = input.runningTime() - Laufzeit
-    if (Pause >= NeuerBuchstabe) {
+    Pause = input.runningTime() - ZeitpunktEmpfangen
+    if (Pause >= PauseNeuerBuchstabe) {
         if (Position > 1) {
             basic.showString(AlleZeichen.charAt(Position))
-            basic.pause(1000)
+            basic.pause(500)
             basic.clearScreen()
         }
         Position = 1
@@ -61,7 +60,7 @@ basic.forever(function () {
             } else {
                 Position = 2 * Position
             }
+            Empfangen = ""
         }
-        Empfangen = ""
     }
 })
