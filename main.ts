@@ -44,6 +44,8 @@ ZeitpunktEmpfangen = 0
 let AlleZeichen = "**ETIANMSURWDKGOHVF*L*PJBXCYZQ**"
 radio.setGroup(1)
 radio.setTransmitPower(7)
+basic.showIcon(IconNames.Yes)
+basic.pause(100)
 basic.forever(function () {
     Pause = input.runningTime() - ZeitpunktEmpfangen
     if (Pause >= PauseNeuerBuchstabe) {
