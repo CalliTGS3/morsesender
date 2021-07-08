@@ -46,6 +46,7 @@ radio.setGroup(1)
 radio.setTransmitPower(7)
 basic.showIcon(IconNames.Yes)
 basic.pause(100)
+basic.clearScreen()
 basic.forever(function () {
     Pause = input.runningTime() - ZeitpunktEmpfangen
     if (Pause >= PauseNeuerBuchstabe) {
