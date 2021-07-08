@@ -28,7 +28,6 @@ control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTT
 })
 radio.onReceivedString(function (receivedString) {
     Empfangen = receivedString
-    Pause = input.runningTime() - Laufzeit
     Laufzeit = input.runningTime()
 })
 let Position = 0
@@ -40,22 +39,23 @@ let Laufzeit = 0
 let Empfangen = ""
 let StrichPunktLaenge = 0
 StrichPunktLaenge = 400
-let NeuesWort = 800
+let NeuerBuchstabe = 1000
 Empfangen = ""
 Laufzeit = 0
 let AlleZeichen = "**ETIANMSURWDKGOHVF*L*PJBXCYZQ**"
 radio.setGroup(1)
 radio.setTransmitPower(7)
 basic.forever(function () {
-    if (Empfangen != "") {
-        if (Pause >= NeuesWort) {
-            if (Position > 1) {
-                basic.showString(AlleZeichen.charAt(Position))
-                basic.pause(1000)
-                basic.clearScreen()
-            }
-            Position = 1
-        } else {
+    Pause = input.runningTime() - Laufzeit
+    if (Pause >= NeuerBuchstabe) {
+        if (Position > 1) {
+            basic.showString(AlleZeichen.charAt(Position))
+            basic.pause(1000)
+            basic.clearScreen()
+        }
+        Position = 1
+    } else {
+        if (Empfangen != "") {
             if (Empfangen == "-") {
                 Position = 2 * Position + 1
             } else {
