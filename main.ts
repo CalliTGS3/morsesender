@@ -22,6 +22,9 @@ control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTT
     }
     basic.clearScreen()
 })
+Event_Extension.LightHigherThan(127, function () {
+    basic.showNumber(input.lightLevel())
+})
 control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTTON_EVT_DOWN, function () {
     Start = input.runningTime()
 })
