@@ -22,14 +22,19 @@ control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTT
     }
     basic.clearScreen()
 })
-Event_Extension.LightHigherThan(127, function () {
-    basic.showNumber(input.lightLevel())
-})
 control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MICROBIT_BUTTON_EVT_DOWN, function () {
     Start = input.runningTime()
 })
+Event_Extension.LightPulse(127, 400, 800, function () {
+    Empfangen = "-"
+    ZeitpunktEmpfangen = input.runningTime()
+})
 radio.onReceivedString(function (receivedString) {
     Empfangen = receivedString
+    ZeitpunktEmpfangen = input.runningTime()
+})
+Event_Extension.LightPulse(127, 100, 400, function () {
+    Empfangen = "."
     ZeitpunktEmpfangen = input.runningTime()
 })
 let Position = 0
