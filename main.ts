@@ -49,7 +49,7 @@ let Empfangen = ""
 let StrichPunktLaenge = 0
 StrichPunktLaenge = 300
 // 3 * dit = 600
-let PauseNeuerBuchstabe = 1000
+let PauseNeuerBuchstabe = 500
 Empfangen = ""
 ZeitpunktEmpfangen = 0
 let AlleZeichen = "**ETIANMSURWDKGOHVF*L*PJBXCYZQ**"
@@ -63,7 +63,7 @@ basic.forever(function () {
     if (Pause >= PauseNeuerBuchstabe) {
         if (Position > 1) {
             basic.showString(AlleZeichen.charAt(Position))
-            basic.pause(500)
+            basic.pause(100)
             basic.clearScreen()
         }
         Position = 1
