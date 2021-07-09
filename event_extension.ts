@@ -39,6 +39,7 @@ control.inBackground(function () {
                 if (TimePulseHigh > pulse_low && TimePulseHigh < pulse_high) {
                     pulsed = true;
                 }
+                LightPulseHigh = false;
             }
         }
         if (pulsed) {
